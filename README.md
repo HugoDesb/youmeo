@@ -21,6 +21,11 @@ Le Front a été développé en Angular 6 et le Backend en NodeJS
 2. MongoDB 4
 
 ## Exécution
+Ouvrir un terminal dans le dossier angular-youmetu et lancer la commande : 
+```bash
+ng serve
+```
+puis ouvrir le navigateur a l'adresse http://localhost:4200/
 
 
 
