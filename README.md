@@ -14,16 +14,37 @@ L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbi
 
 Le projet est composé de 4 silos et un pilote.
 
-Le Front a été développé en Angular 6 et le Backend en NodeJS
+Le Front a été développé en [Angular] (https://nodejs.org/en/) 6 et le Backend en [NodeJS](https://nodejs.org/en/)
+
+## Prérequis
+1. Installer [nodeJS] 11
+2. Installer [MongoDB] 4
 
 ## Installation
-1. nodeJS 11
-2. MongoDB 4
+Dans un Terminal:
+1. Cloner le projet 
+```
+git clone https://github.com/HugoDesb/youmeo.git
+```
+2. Installer les dépendances
+```bash
+cd angular-youmetu
+npm install
+```
 
+```bash
+cd anode_apps
+npm install
+```
 ## Exécution
 Ouvrir un terminal dans le dossier angular-youmetu et lancer la commande : 
 ```bash
 ng serve
+```
+
+Et dans le dossier node_apps, lancer la commande:
+```bash
+node pilote.js
 ```
 puis ouvrir le navigateur a l'adresse http://localhost:4200/
 
