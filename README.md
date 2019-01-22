@@ -15,7 +15,7 @@ L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbi
 Le projet est composé de 4 silos et un pilote.
 
 Le Front a été développé en Angular 6 et le Backend en NodeJS
---------
+
 ## Installation
 1. nodeJS 11
 2. MongoDB 4
