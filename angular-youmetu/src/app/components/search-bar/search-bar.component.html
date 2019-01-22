@@ -1,0 +1,11 @@
+<div class="search">
+    
+    <input #str (keyup.enter)="research(str.value)" type="text" class="searchTerm" placeholder=" Recherchez ici">
+     
+    <button  (click)="research(str.value)" type="button" class="searchButton">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
+    </button>
+
+    
+    
+</div>  

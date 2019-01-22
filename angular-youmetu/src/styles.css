@@ -1,0 +1,60 @@
+.video-title{
+    font-size: 22px;
+}
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+
+    /* Should be removed. Only for demonstration */
+  }
+
+  .column2 {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    overflow: hidden;
+    max-height: 170px;
+    /* Should be removed. Only for demonstration */
+  }
+
+
+  .row{
+    margin-top:50px;
+
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /**/
+  .column-in-left {
+    float: left;
+    width: 60%;
+    padding: 10px;
+    /* Should be removed. Only for demonstration */
+  }
+  .column-in-right {
+    float: left;
+    width: 40%;
+    padding: 10px;
+    /* Should be removed. Only for demonstration */
+  }
+  .row-in{
+    margin-top:50px;
+
+  }
+  /* Clear floats after the columns */
+  .row-in:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

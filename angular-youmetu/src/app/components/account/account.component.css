@@ -1,0 +1,19 @@
+span.glyphicon-user {
+    font-size: 10em;
+    color:#7ed6df;
+}
+
+p.text{
+    font-size: 2em;
+    font-style: bold;
+    margin-bottom: 1%;
+}
+
+.mdp{
+    margin-top: 10%;
+    margin-right: 3%;
+    font-size: 2em;
+    font-style: bold;
+    color:#7ed6df;
+}
+

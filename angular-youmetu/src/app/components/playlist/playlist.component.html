@@ -1,0 +1,54 @@
+<div class="text-center">
+    <h1 style="font-style: bold;">{{playlist_name}}</h1>
+</div>
+
+
+
+<div class="row">
+    
+    <!-- YOUTUBE -->
+    <div class="column" style="background-color:#ff7979;">
+        <div *ngFor="let video of videos" style="margin-left: 100px;" >
+
+            <div *ngIf="video.video.platform == 1"> 
+                <div class="row">
+                    <div> 
+                        <a [routerLink]="['/watch']" [queryParams]="{plateforme: 1, id:video.video.video_id}">
+                            <img src="{{video.video.thumbnail_URL}}" style="float:left" />
+                        </a> 
+                        <button (click)="deleteVideo(video.video)" style="margin-left:  2%;">Supprimer video</button>
+                    </div>  
+
+                    <div class="column2">
+                        <span class="video-title">{{video.video.title}}</span> <br />
+                        <span style="font-size:12px">{{video.video.description}}</span>
+                        
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIMEO -->
+    <div class="column" style="background-color:#7ed6df;" >
+        <div *ngFor="let video of videos" style="margin-left: 100px;" >
+            <div *ngIf="video.video.platform == 2">
+                <div class="row">
+                    <div>
+                        <a [routerLink]="['/watch']" [queryParams]="{plateforme: 2, id:video.video.video_id}">
+                            <img src="{{video.video.thumbnail_URL}}" width="320px" height="180px" style="float:left"/>
+                        </a>  
+                        <button (click)="deleteVideo(video.video)" style="margin-left:  2%;">Supprimer video</button>       
+                    </div>
+
+                    <div class="column2">
+                        <span class="video-title">{{video.video.title}}</span> <br />
+                        <span style="font-size:12px">{{video.video.description}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+.userMenu {
+  position: fixed;
+  top: 20px;
+  right: 20px ;
+  z-index: 10;
+}
+.userMenu-header{
+  margin-bottom: 20px;
+}
+
+.userMenu-content {
+  margin-right: 80px;
+  margin-top: 30px;
+  margin-left: 80px;
+  margin-bottom: 150px;
+  width: 350px;
+}
+
+
+span.glyphicon-user {
+  font-size: 2.6em;
+}
+
+.blue-square{
+
+}
+
+.red-square{
+  float: right;
+}
+
+input{
+  width: 100%;
+}
+
+button {
+  float:right;
+}

@@ -1,0 +1,13 @@
+<div class="text-center" style="margin-top: 10%">
+  <input #pname ype="text" placeholder="Nom de la playlist"/> <button style="margin-left:  20px; " class="btn btn-info" (click)="createPlaylist(pname.value)" >
+    Créer playlist</button>
+  
+    <div>
+    <h2 class="titre">Mes playlists</h2>
+    <li *ngFor="let playlist of playlists">
+        <a [routerLink]="['/playlist']" [queryParams]="{id: playlist.playlist_id, name: playlist.name}" class="text" >{{playlist.name}}</a>
+        <button (click)="deletePlaylist(playlist)" style="margin-left:  2%;">Supprimer playlist</button>
+    </li>
+  
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <a routerLink="/home" routerLinkActive="active" class="navbar-brand"><img src="assets/images/youmeo-icon.png"></a>
+  <div class="collapse navbar-collapse">
+    <!--<ul class="navbar-nav topnav">
+      <li class="nav-item active">
+        <a routerLink="/playlist" routerLinkActive="active" class="nav-link">Playlists</a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/account" routerLinkActive="active" class="nav-link">Mon compte</a>
+      </li>
+    </ul>
+  -->
+  </div>
+</nav>
+
+<div>
+  <div class="dropdown show userMenu">
+    <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+
+   
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <div class="userMenu-content" *ngIf="!logged">
+        <div class="userMenu-header">
+        Bienvenue sur <img width="70" src="assets/images/youemo-ban.png" /> <br /> <br /> 
+        <b>Connectez</b> vous pour acceder à toutes vos <b>playlists</b> !
+      </div>
+      
+      <login-form (login)='login($event)'></login-form>
+     
+
+      <a style="float:left"  routerLink="inscription" routerLinkActive="active"><i>Pas de compte ? par ici !</i></a>
+
+      </div>
+      <div class="userMenu-content" *ngIf="logged">
+        
+        <div style="text-align:center; margin-bottom:45px;">
+          <img src="assets/images/youmeo-icon.png" />
+        </div>
+        <div>
+          <a routerLink="account"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Mon compte</span></a> <br />
+          <a routerLink="listPlaylist"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Mes Playlists</span></a> <br />
+          <a routerLink="historique"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Historique</span></a><br />
+          <a routerLink="admin-panel" *ngIf="user.admin"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Admin</span></a>
+        </div>
+        <br />
+        <button class="btn btn-secondary" (click)="logout()">Déconnexion</button>
+      </div>
+    </div>
+  </div>
+
+
+<router-outlet></router-outlet>
+
+</div>

@@ -1,0 +1,56 @@
+<div style="width:30%; margin:auto; ">
+  <search-bar str (researchSubmitted)="research($event)"></search-bar>
+  
+  <span style="font-size:22px; color:#ff7979" >Youtube </span>
+  <input type="checkbox" [checked]="youtube" (change)="youtube = !youtube"/>
+
+  <span style="float:right">
+    <input type="checkbox" [checked]="vimeo" (change)="vimeo = !vimeo"/>
+    <span style="font-size:22px; color:#7ed6df" > Vimeo </span>
+  </span>
+
+</div>
+
+<ngx-spinner></ngx-spinner>
+
+<div class="row">
+<!-- YOUTUBE -->
+    <div class="column" style="background-color:#ff7979;" *ngIf="youtube">
+        <div *ngFor="let video of youtubeData" style="margin-left: 100px;" >
+          
+            <div class="row">
+              <div>
+              <a [routerLink]="['/watch']" [queryParams]="{plateforme: 1, id:video.id.videoId}">
+                <img src="{{video.snippet.thumbnails.medium.url}}" style="float:left" />
+              </a> 
+          </div>
+
+           <div class="column2">
+            <span class="video-title">{{video.snippet.title}}</span> <br />
+            <span style="font-size:16px">{{video.snippet.description}}</span>
+          </div>  
+          </div>
+      
+      </div>
+    </div>
+  <!-- VIMEO -->
+    <div class="column" style="background-color:#7ed6df;" *ngIf="vimeo">
+        <div *ngFor="let video of vimeoData" style="margin-left: 100px;" >
+          
+          <div class="row">
+            <div>
+              <a [routerLink]="['/watch']" [queryParams]="{plateforme: 2, id:video.link.split('/').pop()}">
+                <img src="{{video.pictures.sizes[3].link}}" width="320px" height="180px" style="float:left"/> 
+              </a>         
+            </div>
+
+            <div class="column2">
+              <span class="video-title">{{video.name}}</span> <br />
+              <span style="font-size:16px">{{video.user.name}}</span> <br />
+              <span style="font-size:12px">{{video.description}}</span>
+            </div>  
+          </div>
+      
+      </div>
+    </div>
+  </div>

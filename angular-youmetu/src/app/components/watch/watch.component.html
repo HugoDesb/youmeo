@@ -1,0 +1,29 @@
+<div style="width:30%; margin:auto; ">
+   <search-bar str (researchSubmitted)="research($event)"></search-bar>      
+</div>
+
+
+<!-- Vimeo -->
+<div class="text-center" >
+ <iframe *ngIf="vimeo" [src]="sanitizeVimeo()" width="900" height="600" frameborder="0" title="{{video.name}}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+ <iframe *ngIf="youtube" id="ytplayer" type="text/html" width="900" height="500" [src]="sanitizeYoutube()" frameborder="0" style="margin-top:3%;"></iframe>
+
+ <div class="dropdown" style="margin-left: 735px">
+
+   <button type="button" class="btn btn-info dropdown-toggle" id="mydp" data-toggle="dropdown" aria-haspopup="true" >Ajouter à une playlist
+       <span class="caret"></span>
+       <span class="sr-only">Split button!</span>
+   </button>
+   <ul class="dropdown-menu" role="menu" aria-labelledby="mydp">
+    <li *ngFor="let playlist of playlists">
+        <a (click)="addVideoToPlaylist(playlist)">{{playlist.name}}</a>
+    </li>
+
+
+       <li class="divider"></li>
+       <li><a routerLink="/listPlaylist">Créer une nouvelle playlist</a>
+       </li>
+   </ul>
+</div>
+</div> 
+

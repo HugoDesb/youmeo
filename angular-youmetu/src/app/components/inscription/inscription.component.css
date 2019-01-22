@@ -1,0 +1,10 @@
+#header{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.wrapper{
+    width: 35%;
+    margin: auto; 
+    margin-top: 200px;
+}

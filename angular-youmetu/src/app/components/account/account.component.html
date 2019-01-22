@@ -1,0 +1,12 @@
+<div class="text-center">
+
+    <span class="glyphicon glyphicon-user"></span>
+    <p class="text">Prénom: {{ user.firstname }}</p>
+    <p class="text">Nom: {{ user.lastname }}</p>
+    <p class="text">Email: {{ user.email }}</p>
+    <p class="text">Admin: {{ user.admin }}</p>
+
+    <span class="mdp"><a [routerLink]="['/edit-password']" >Modifier le mot de passe</a></span>
+    <button (click)="deleteAccount()">Supprimer le compte</button>
+</div>
+
