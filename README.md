@@ -28,11 +28,6 @@ git clone https://github.com/HugoDesb/youmeo.git
 cd angular-youmetu
 npm install
 ```
-
-```bash
-cd anode_apps
-npm install
-```
 ## Exécution
 1. Ouvrir un terminal dans le dossier angular-youmetu et lancer la commande : 
 ```bash
