@@ -42,7 +42,7 @@
           <a routerLink="account"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Mon compte</span></a> <br />
           <a routerLink="listPlaylist"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Mes Playlists</span></a> <br />
           <a routerLink="historique"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Historique</span></a><br />
-          <a routerLink="admin-panel" *ngIf="user.admin"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Admin</span></a>
+          <a routerLink="admin-panel" *ngIf="user && user.admin"><img src="assets/images/playlist.png" width="50px" height="50px" /> <span style="font-size: 16px; margin-left:10px;">Admin</span></a>
         </div>
         <br />
         <button class="btn btn-secondary" (click)="logout()">Déconnexion</button>

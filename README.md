@@ -4,23 +4,52 @@
 
 L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbiolles et Mélissa L'Hénoret**.
 
-| **Connexion** | **Inscription** | **Recherche Video** | 
-| :-----------: | :-------------: | :-----------------: | 
-| cell 1        | cell 2          | cell 2              |
+| **Connexion**                          | **Inscription**                          | **Recherche Video**                    | 
+| :------------------------------------: | :--------------------------------------: | :------------------------------------: | 
+| ![Capture d'écran 1](img/Connexion.PNG)| ![Capture d'écran 2](img/Inscription.PNG)| ![Capture d'écran 3](img/Recherche.PNG)|
 
-| **Video** | **Playlist** | **Mon compte** | 
-| :-------: | :----------: | :------------: | 
-| cell 1    | cell 2       | cell 2         |
+|**Video**                           |   **Liste des Playlists**                   | **Playlist**                           | 
+|:---------------------------------: | :-----------------------------------------: | :------------------------------------: | 
+| ![Capture d'écran 4](img/Video.PNG)| ![Capture d'écran 5](img/List-playlist.PNG) | ![Capture d'écran 6](img/Playlist.PNG) |
+
+| **Historique**                         | **Mon compte**                      | **Admin**                          | 
+| :-------------------------------------:| :----------------------------------:| :--------------------------------: | 
+|![Capture d'écran 7](img/Historique.PNG)|![Capture d'écran 8](img/Compte.PNG) |![Capture d'écran 9](img/Admin.PNG) |
 
 Le projet est composé de 4 silos et un pilote.
 
-Le Front a été développé en Angular 6 et le Backend en NodeJS
---------
+Les silos et le pilote sont des applications indépendantes.
+
+Le Front a été développé en [Angular6](https://angular.io/) et le Backend en [NodeJS](https://nodejs.org/en/)
+
+## Prérequis
+1. Installer [nodeJS](https://nodejs.org/en/) 11
+2. Installer [MongoDB](https://www.mongodb.com/fr) 4
+
 ## Installation
-1. nodeJS 11
-2. MongoDB 4
-
+Dans un Terminal:
+1. Cloner le projet 
+```
+git clone https://github.com/HugoDesb/youmeo.git
+```
+2. Installer les dépendances
+```bash
+cd angular-youmetu
+npm install
+```
 ## Exécution
+1. Ouvrir un terminal dans le dossier angular-youmetu et lancer la commande : 
+```bash
+ng serve
+```
+2. puis ouvrir le navigateur a l'adresse http://localhost:4200/
 
+## Admin
+Utiliser le user admin existant lors de la connexion:
+* Email: *admin@admin.fr*
+* Password: *admin*
+
+## TodoList
+L'application **TodoList** est reliée au pilote de notre api Youmeo 
 
 

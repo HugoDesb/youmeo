@@ -28,7 +28,7 @@ export class PlaylistComponent implements OnInit {
 
   loadVideos(){
     this.playlistService.getVideos(this.playlist_id,(data)=>{
-      this.videos = data.data.res.videos;
+      this.videos = data.res.videos;
     })
   }
 

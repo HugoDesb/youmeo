@@ -28,11 +28,13 @@ const routes: Routes = [
   },
   {
     path: 'playlist',
-    component: PlaylistComponent
+    component: PlaylistComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'listPlaylist',
-    component: ListPlaylistsComponent
+    component: ListPlaylistsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'research',
@@ -45,14 +47,17 @@ const routes: Routes = [
   {
     path: 'admin-panel',
     component: AdminPanelComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'historique',
-    component: HistoriqueComponent
+    component: HistoriqueComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-password',
     component: EditPasswordComponent,
+    canActivate: [AuthGuard]
   },
   {  
     path: '**', 

@@ -106,15 +106,21 @@ export class UserService {
     }) 
   }
 
-  updateAdmin(user){
-    console.log('oeode')
+  updateAdmin(user, res){
+    
     let admin_id = JSON.parse(localStorage.getItem('user_id'))
-    this.http.put('https://pilote-youmeo.herokuapp.com/api/users/'+user.user_id, {field:'admin',value:user.admin, user_id:admin_id}).subscribe();
+    this.http.put('https://pilote-youmeo.herokuapp.com/api/users/'+admin_id, {field:'admin',value:user.is_admin, user_id:user.user_id}).subscribe(data =>{
+      res(data)
+    });
   }
 
-  updateActive(user){
+  updateActive(user, res){
+   
     let admin_id = JSON.parse(localStorage.getItem('user_id'))
-    this.http.put('https://pilote-youmeo.herokuapp.com/api/users/'+user.user_id, {field:'active',value:user.active, user_id:admin_id}).subscribe();
+    console.log(admin_id);
+    this.http.put('https://pilote-youmeo.herokuapp.com/api/users/'+admin_id, {field:'active',value:user.is_active, user_id:user.user_id}).subscribe(data =>{
+      res(data)
+    });
 
   }
 
