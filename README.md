@@ -4,10 +4,12 @@
 
 L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbiolles et Mélissa L'Hénoret**.
 
-| **Connexion**       | **Inscription**     | **Recherche Video** | **Video**           | **Playlist**        | **Mon compte**      | 
-| :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | 
-| ![Capture d'écran 1](img/Connexion.PNG)| ![Capture d'écran 2](img/Inscription.PNG)| cell 2              | cell 1              | cell 2              | cell 2              |
-
+| **Connexion**                          | **Inscription**                          | **Recherche Video**                    | **Historique**                         | 
+| :------------------------------------: | :--------------------------------------: | :------------------------------------: | :------------------------------------: | 
+| ![Capture d'écran 1](img/Connexion.PNG)| ![Capture d'écran 2](img/Inscription.PNG)| ![Capture d'écran 3](img/Recherche.PNG)|![Capture d'écran 3](img/Historique.PNG)|
+|**Video**                           |   **Liste des Playlists**                   | **Playlist**                           | **Mon compte**                      | 
+|:---------------------------------: | :-----------------------------------------: | :------------------------------------: | :---------------------------------: | 
+| ![Capture d'écran 4](img/Video.PNG)| ![Capture d'écran 5](img/List-playlist.PNG) | ![Capture d'écran 6](img/Playlist.PNG) |![Capture d'écran 6](img/Compte.PNG) |
 
 Le projet est composé de 4 silos et un pilote.
 
