@@ -41,12 +41,7 @@ npm install
 ```bash
 ng serve
 ```
-
-2. Et dans le dossier node_apps, lancer la commande:
-```bash
-node pilote.js
-```
-3. puis ouvrir le navigateur a l'adresse http://localhost:4200/
+2. puis ouvrir le navigateur a l'adresse http://localhost:4200/
 
 ## Admin
 Pour créer un premier compte admin:
