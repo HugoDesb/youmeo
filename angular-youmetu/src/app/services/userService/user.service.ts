@@ -20,7 +20,7 @@ export class UserService {
     {
       
       if(data['success'] === true){
-        //console.log(data)
+        console.log(data)
         localStorage.setItem('user_id', JSON.stringify(data['user_id'])); 
         res();
       }
@@ -40,13 +40,14 @@ export class UserService {
   getUserById(user_id, res){
     this.http.get("https://pilote-youmeo.herokuapp.com/api/users/"+user_id).subscribe(data => {
       res(data)
+      console.log('loooooool6');
     })
   }
 
   getAllUsers(user_id, res){
     this.http.get('https://pilote-youmeo.herokuapp.com/api/log/users/'+user_id).subscribe(data => {
       res(data)
-      //console.log(data)
+      console.log(data)
     })
   }
 
@@ -74,10 +75,8 @@ export class UserService {
   }
 
   signup(user:User){
-    //console.log(user)
-    this.http.post('https://pilote-youmeo.herokuapp.com/api/users',user).subscribe(data => { 
-      //console.log(data)
-    })
+    console.log(user)
+    this.http.post('https://pilote-youmeo.herokuapp.com/api/users',user).subscribe(data => console.log(data))
 
   }
 
@@ -92,8 +91,8 @@ export class UserService {
       }
 
       this.http.put('https://pilote-youmeo.herokuapp.com/api/users',user).subscribe(data => {
-        //console.log(data);
-      })
+        console.log(data);
+          })
 
     
     })

@@ -9,6 +9,7 @@ import {LogService} from '../../services/logService/log.service';
 export class HistoriqueComponent implements OnInit {
 
   private historiques = [];
+  private newdate:any;
   constructor(private logService:LogService) { }
 
   ngOnInit() {
@@ -16,13 +17,19 @@ export class HistoriqueComponent implements OnInit {
 
     if(user_id){
       this.logService.getHistorique(user_id,(response) => {
-        console.log("loooooooooooooooooooool") 
-        console.log(response.data);
-
         this.historiques = response.data;
-        })
-      }
+        
+        // pour obtenir la date et l'heure
+        var n = this.historiques.length
+        for(var i=0;i<n;i++){
+          this.historiques[i]['date'] =this.historiques[i]['date'].split('T');
 
+          this.historiques[i]['date'][0] = this.historiques[i]['date'][0].split('-').reverse().join('/');
+          this.historiques[i]['date'][1] = this.historiques[i]['date'][1].split('.')[0];
+        }
+
+      })
+    }
   }
 
 }

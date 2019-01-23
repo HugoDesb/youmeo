@@ -1,8 +1,21 @@
 <div class="text-center">
-  <ul>
-    <li *ngFor="let historique of historiques">
-        {{historiques.query}}
-    </li>
-  </ul>
-
+  <h1>Historique</h1>
+</div>
+<div style="width:95%; margin:2%;">
+    <table class="table table-bordered">
+        <thead style="background-color: lightgrey">
+          <tr>
+            <th scope="col">Recherche</th>
+            <th scope="col">Date</th>
+            <th scope="col">Heure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let historique of historiques">
+            <td>{{historique.query}}</td>
+            <td >{{historique.date[0]}}</td>
+            <td>{{historique.date[1]}}</td>
+          </tr>
+        </tbody>
+      </table>
 </div>
