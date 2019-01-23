@@ -8,6 +8,7 @@ import {LogService} from '../../services/logService/log.service';
 })
 export class HistoriqueComponent implements OnInit {
 
+  private historiques = [];
   constructor(private logService:LogService) { }
 
   ngOnInit() {
@@ -15,7 +16,10 @@ export class HistoriqueComponent implements OnInit {
 
     if(user_id){
       this.logService.getHistorique(user_id,(response) => {
-         console.log(response);
+        console.log("loooooooooooooooooooool") 
+        console.log(response.data);
+
+        this.historiques = response.data;
         })
       }
 
