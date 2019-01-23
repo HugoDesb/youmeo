@@ -596,7 +596,7 @@ app.delete('/api/:playlist_id/:video_id', function(req, res){
  * 
  * Obtient l'historique des recherches de tous les utilisateurs
  */
-app.get('/api/log/historique/:user_id', function(req, res){
+app.get('/api/log/historique/admin/:user_id', function(req, res){
     if(!req.params.user_id){
         res.send({
             success : false,
