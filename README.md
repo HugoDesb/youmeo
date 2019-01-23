@@ -4,13 +4,10 @@
 
 L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbiolles et Mélissa L'Hénoret**.
 
-| **Connexion** | **Inscription** | **Recherche Video** | 
-| :-----------: | :-------------: | :-----------------: | 
-| cell 1        | cell 2          | cell 2              |
+| **Connexion**       | **Inscription**     | **Recherche Video** | **Video**           | **Playlist**        | **Mon compte**      | 
+| :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | 
+| cell 1              | cell 2              | cell 2              | cell 1              | cell 2              | cell 2              |
 
-| **Video** | **Playlist** | **Mon compte** | 
-| :-------: | :----------: | :------------: | 
-| cell 1    | cell 2       | cell 2         |
 
 Le projet est composé de 4 silos et un pilote.
 
