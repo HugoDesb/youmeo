@@ -13,7 +13,7 @@ export class PlaylistService {
 
   public createPlaylist(user_id,name,res){
     this.http.post('https://pilote-youmeo.herokuapp.com/api/playlist', {user_id:user_id, name:name},).subscribe(data => {
-       res();
+       res(data);
     })
   }
 

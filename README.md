@@ -6,12 +6,14 @@ L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbi
 
 | **Connexion**       | **Inscription**     | **Recherche Video** | **Video**           | **Playlist**        | **Mon compte**      | 
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: | 
-| cell 1              | cell 2              | cell 2              | cell 1              | cell 2              | cell 2              |
+| ![Capture d'écran 1](Connexion.PNG)| ![Capture d'écran 2](Inscription.PNG)| cell 2              | cell 1              | cell 2              | cell 2              |
 
 
 Le projet est composé de 4 silos et un pilote.
 
-Le Front a été développé en [Angular](https://angular.io/) 6 et le Backend en [NodeJS](https://nodejs.org/en/)
+Les silos et le pilote sont des applications indépendantes.
+
+Le Front a été développé en [Angular6](https://angular.io/) et le Backend en [NodeJS](https://nodejs.org/en/)
 
 ## Prérequis
 1. Installer [nodeJS](https://nodejs.org/en/) 11
