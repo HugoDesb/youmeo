@@ -6,11 +6,11 @@ L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbi
 
 | **Connexion**                          | **Inscription**                          | **Recherche Video**                    | **Historique**                         | 
 | :------------------------------------: | :--------------------------------------: | :------------------------------------: | :------------------------------------: | 
-| ![Capture d'écran 1](img/Connexion.PNG)| ![Capture d'écran 2](img/Inscription.PNG)| ![Capture d'écran 3](img/Recherche.PNG)|![Capture d'écran 3](img/Historique.PNG)|
+| ![Capture d'écran 1](img/Connexion.PNG)| ![Capture d'écran 2](img/Inscription.PNG)| ![Capture d'écran 3](img/Recherche.PNG)|![Capture d'écran 4](img/Historique.PNG)|
 
 |**Video**                           |   **Liste des Playlists**                   | **Playlist**                           | **Mon compte**                      | 
 |:---------------------------------: | :-----------------------------------------: | :------------------------------------: | :---------------------------------: | 
-| ![Capture d'écran 4](img/Video.PNG)| ![Capture d'écran 5](img/List-playlist.PNG) | ![Capture d'écran 6](img/Playlist.PNG) |![Capture d'écran 6](img/Compte.PNG) |
+| ![Capture d'écran 5](img/Video.PNG)| ![Capture d'écran 6](img/List-playlist.PNG) | ![Capture d'écran 7](img/Playlist.PNG) |![Capture d'écran 8](img/Compte.PNG) |
 
 | **Admin**                          | 
 | :--------------------------------: | 
@@ -49,5 +49,7 @@ Utiliser le user admin existant lors de la connexion:
 * Email: *admin@admin.fr*
 * Password: *admin*
 
+## TodoList
+L'application **TodoList** est réliée au pilote de notre api Youmeo 
 
 
