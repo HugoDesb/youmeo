@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
-
+const uuidv4 = require('uuid/v4');
 
 var app = express();
 var port = 8390;
@@ -31,8 +31,7 @@ app.use(function(req, res, next){
 
 var Schema = mongoose.Schema;
 
-
-mongoose.connect('mongodb://hugopuissant:bla1bla1@ds161144.mlab.com:61144/youmeo', function (err) {
+mongoose.connect('mongodb://youmeoadmin:bla1bla1@ds161804.mlab.com:61804/youmeo-logs', function (err) {
     if(err){
         throw err;
     }else{
@@ -42,7 +41,8 @@ mongoose.connect('mongodb://hugopuissant:bla1bla1@ds161144.mlab.com:61144/youmeo
 
 //declare schema USER
 var LogSchema = Schema({
-    user_id: {type: String, unique:true},
+    _id:String,
+    user_id: String,
     date : Date,
     type:String,
     value: String
@@ -145,8 +145,10 @@ module.exports = {
                 throw err
             }else{
                 if(data){
+                    console.log(data)
                     let array = [];
                     data.forEach(element => {
+                        console.log(element);
                         array.push({
                             date:element.date,
                             query:element.value
@@ -185,7 +187,9 @@ module.exports = {
 
 
     addEntry: function(line, cb){
+        console.log("entry : " + line);
         var logLineToAdd = new LogModel({
+            _id : uuidv4(),
             user_id:line.user_id,
             date: new Date(),
             type:line.type,
@@ -217,7 +221,8 @@ app.post('/silo/getAllSearches', function(request, response){
     })
 });
 
-// GET ALL SEARCH FOR USER
+
+// GET ALL SEARCHES FOR USER
 app.post('/silo/getAllSearchesForUser', function(request, response){
     module.exports.getAllSearchesForUser(request.body.user_id, function(res){
         response.send(res);
@@ -245,15 +250,18 @@ app.post('/silo/addVideo', function(request, response){
 
 // ADD SEARCH LOG
 app.post('/silo/addSearch', function(request, response){
+    console.log("tadaaa");
     let line = {
         user_id : request.body.user_id,
         type : 'SEARCH',
         value : request.body.value
     }
     module.exports.addEntry(line, function(res){
+        console.log("tadaaa");
         response.send(res);
+        console.log("tadaaa");
     })
-})
+});
 
 // ADD CONNECT LOG
 app.post('/silo/addConnect', function(request, response){

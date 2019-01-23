@@ -36,7 +36,7 @@ var Schema = mongoose.Schema;
 var uuidv4 = require("uuid/v4");
 
 
-mongoose.connect('mongodb://hugopuissant:bla1bla1@ds161144.mlab.com:61144/youmeo', function (err) {
+mongoose.connect('mongodb://youmeoadmin:bla1bla1@ds161794.mlab.com:61794/youmeo-playlists', function (err) {
     if(err){
         throw err;
     }else{
@@ -89,6 +89,7 @@ function computePlaylistVideoCount(listOfVideos, cb){
 // GET PLAYLIST FOR USER
 app.post('/silo/getPlaylistsForUser', function(request, response){
     module.exports.getPlaylistsForUser(request.body.user_id, function(res){
+        console.log(res);   
         response.send(res);
     })
 });
@@ -163,7 +164,7 @@ module.exports = {
                         });
                     });
                 });
-                console.log(ret)
+                console.log(ret);   
                 cb(ret);
             }
         })
@@ -275,15 +276,21 @@ module.exports = {
      * @param {*} cb 
      */
     deletevideo : function(data, cb){
-        console.log(data)
-        PlaylistModel.updateOne({playlist_id:data.playlist_id},{$pull:{videos:{video_id:data.video_id}}},function(err,res){
+        console.log("Suppro playlist_id" + data.playlist_id);
+        console.log("Suppro playlist_id" + data.video_id);
+        PlaylistModel.updateOne({"playlist_id":data.playlist_id},{"$pull":{"videos":{"video.video_id":data.video_id}}},function(err,res){
             if(err){
                 throw err;
             }else{
+                console.log(res);
                 if(res.deleteCcount == 0){
-                    cb(false);
+                    cb({
+                        success : false
+                    });
                 }else{
-                    cb(true);
+                    cb({
+                        success : true
+                    });
                 }
             }
         });
@@ -299,10 +306,18 @@ module.exports = {
             if(err){
                 throw err;
             }else{
-                cb({
-                    success:true,
-                    count:c
-                });
+                if(c == undefined){
+                    cb({
+                        success:true,
+                        count:0
+                    });
+                }else{
+                    cb({
+                        success:true,
+                        count:c
+                    });
+                }
+                
             }
             
         });

@@ -37,7 +37,8 @@ var Schema = mongoose.Schema;
 var uuidv4 = require("uuid/v4");
 
 
-mongoose.connect('mongodb://hugopuissant:bla1bla1@ds161144.mlab.com:61144/youmeo', function (err) {
+
+mongoose.connect('mongodb://youmeoadmin:bla1bla1@ds161804.mlab.com:61804/youmeo-users', function (err) {
     if(err){
         throw err;
     }else{

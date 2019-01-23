@@ -4,6 +4,7 @@ var path = require('path');
 var generator = require('generate-password');
 var requestJSON = require('request-json');
 var bodyParser = require('body-parser');
+const uuidv4 = require('uuid/v4');
 
 var app = express();
 var port = 8095;
@@ -320,14 +321,16 @@ app.get('/api/users/:user_id', function(request, response){
  * Change la valeur demandée
  */
 app.put('/api/users/:user_id', function(req, res){
-    if(!req.params.user_id || !req.body.user_id || !req.body.value || !req.body.field){
+    console.dir(req.params);
+    console.dir(req.body);
+    if(req.params.user_id==null || req.body.user_id==null || req.body.value==null || req.body.field==null){
         res.send({
             success: false,
             errorSet:['ONE_OR_MORE_FIELD_IS_EMPTY']
         });
     }else{
         let dataToInsert = {
-            user_id : req.params.user_id,
+            user_id : req.body.user_id,
             field: req.body.field,
             value: req.body.value,
         }
@@ -346,28 +349,28 @@ app.put('/api/users/:user_id', function(req, res){
                 }
             });
         }else if(req.body.field == 'active' || req.body.field == 'admin'){
-            clientUser.post('/silo/isAdmin',{user_id: req.params.user_id}, function(err, res, body) {
-                if(err){
-                    throw err;
+            clientUser.post('/silo/isAdmin',{user_id: req.params.user_id}, function(err1, res1, body1) {
+                if(err1){
+                    throw err1;
                 }
-                if(body.isAdmin){
-                    clientUser.post('/silo/changeValue',{}, function(err2, res2, body2){
+                if(body1){
+                    clientUser.post('/silo/changeValue',dataToInsert, function(err2, res2, body2){
+                        console.dir(body2)
                         if(err2){
                             throw err2;
-                        }
-                        if(body2.success){
+                        }else if(body2){
                             res.send({success: true});
                         }else{
                             res.send({
                                 success: false,
-                                errorSet:['UNKNOWN_ERROR']
+                                errorSet:['CANNOT_CHANGE']
                             });
                         }
                     });
                 }else{
                     res.send({
                         success:false, 
-                        errorSet:['UNKNOWN_ERROR']
+                        errorSet:['NOT_ADMIN']
                     });
                 }
             });
@@ -406,17 +409,9 @@ app.get('/api/playlist/:userId', function(req, res){
         clientPlaylist.post('/silo/getPlaylistsForUser', data, function(err, response, body){
             res.send({
                 success:true,
-                data:body.data
+                data:body
             });
         })
-        /*
-        dataPlaylistLayer.getPlaylistsForUser(req.params.userId, function(data){
-            res.send({
-                success:true,
-                data:data
-            });
-        });
-        */
     }
 });
 
@@ -596,7 +591,7 @@ app.delete('/api/:playlist_id/:video_id', function(req, res){
  * 
  * Obtient l'historique des recherches de tous les utilisateurs
  */
-app.get('/api/log/historique/:user_id', function(req, res){
+app.get('/api/log/historique/admin/:user_id', function(req, res){
     if(!req.params.user_id){
         res.send({
             success : false,
@@ -633,7 +628,9 @@ app.get('/api/log/historique/:user_id', function(req, res){
             errorSet:['NO_USER_ID']
         });
     }else{
-        let data ={user_id: req.params.user_id}
+        let data ={
+            user_id: req.params.user_id
+        }
         clientLog.post('/silo/getAllSearchesForUser', data, function(err2, response2, body2){
             res.send(body2);
         })
@@ -659,9 +656,12 @@ app.get('/api/log/users/:user_id', function(req, res){
         clientUser.post('/silo/isAdmin', dataIsAdmin, function(err1, response1, retIsAdmin){
             if(retIsAdmin){
                 var array = [];
-                clientUser.post('silo/getAllUsers', data, function(err, response, bodyusers){
+                var counter = 0;
+                clientUser.post('silo/getAllUsers', dataIsAdmin, function(err, response, bodyusers){
+                    console.log("bodyusers");
+                    console.log(bodyusers);
                     bodyusers.data.forEach(userObject => {
-                        let userStatObject = {
+                        var userStatObject = {
                             user_id:userObject.user_id,
                             firstname: userObject.firstname,
                             lastname: userObject.lastname,
@@ -670,8 +670,12 @@ app.get('/api/log/users/:user_id', function(req, res){
                             is_admin: userObject.admin
                         }
                         clientPlaylist.post('/silo/getPlaylistCount', userStatObject, function(err3,response3, bodycount){
+                            console.log("bodycount ");
+                            console.log(bodycount)
                             userStatObject.playlist_count = bodycount.count;
                             clientLog.post('/silo/getStatsForUser', userStatObject, function(err4, response4, bodystats){
+                                console.log("bodystats ");
+                                console.dir(bodystats);
                                 if(bodystats.success){
                                     userStatObject.playbacks_monthly_count = bodystats.playbacks_monthly_count;
                                     userStatObject.last_login = bodystats.last_login;
@@ -680,13 +684,18 @@ app.get('/api/log/users/:user_id', function(req, res){
                                     userStatObject.last_login = null;
                                 }
                                 array.push(userStatObject);
+                                counter ++;
+                                //On envoie quand on a le dernier user
+                                if(counter == bodyusers.data.length){
+                                    console.dir(array);
+                                    res.send({
+                                        success : true,
+                                        usersStats : array
+                                    }); 
+                                }
                             });
                         });
                     });
-                    res.send({
-                        success : true,
-                        usersStats : array
-                    }); 
                 });  
             }else{
                 res.send({
@@ -734,6 +743,8 @@ app.get('/api/search/:user_id/:platform_id/:query',function(req,res){
             clientLog.post('/silo/addSearch', data, function(err2, response2, body2){
                 if(err){
                     console.log("log search failed");
+                }else{
+                    console.log(body2);
                 }
             });
             res.send(body);
@@ -777,12 +788,110 @@ app.get('/api/video/:user_id/:platformId/:videoId', function(req,res){
 /***
  * =====================================================================================
  * 
- *                                  SEARCH
+ *                                  TODO
  * 
  * =====================================================================================
  */
 
+ // OBTIENT LES TODOS DE L'UTILISATEUR
+app.post('/api/:user_id/todos', function (req, res) {
+    if(!req.params.user_id){
+        res.send({
+            success: false,
+            errorSet:['ONE_OR_MORE_FIELD_IS_EMPTY']
+        });
+    }else{
+        let data1 = {
+            user_id: req.params.user_id
+        }
+        clientTodo.post('/silo/getTaskSet', data1, function(err2, res2, body2){
+            res.send(body2);
+        });
+    }
+});
 
+// OBTIENT LE TODO CORRRESPONDANT A L'ID
+app.post('/api/todos/:todo_id', function(req,res){
+    if(!req.params.todo_id){
+        res.send(
+            {
+                success:false,
+                errorSet:['ID_IS_EMPTY']
+            }
+        );
+    }else{
+        let data = {
+            todo_id : req.params.todo_id
+        }
+        clientTodo.post('/silo/findTaskById', data, function(err1, res1, body1){
+            res.send(body1);
+        });
+    }
+});
+
+// MET A JOUR LA TASK
+app.post('/api/todos/update', function(req,res){
+    if(!req.body.name && !req.body.done && !req.body.todo_id){
+        res.send(
+            {
+                success:false,
+                errorSet:['ONE_VALUE_IS_EMPTY']
+            }
+        );
+    }else{
+        var task = {
+            id:req.body.todo_id,
+            name:req.body.name,
+            done:req.body.done
+        };
+
+        clientTodo.post('/silo/updateTask', task, function(err1, res1, body1){
+            res.send(body1);
+        });
+    }
+});
+
+// AJOUTE UNE TASK
+app.post('/api/todos/addTask', function(req, res){
+
+    if(!req.body.name || !req.body.user_id ){
+        res.send(
+            {
+                success:false,
+                errorSet:['ONE_OR_MORE_FIELD_IS_EMPTY']
+            }
+        );
+    }else{
+        var task = {
+            id:uuidv4(),
+            name:req.body.name,
+            done:false,
+            user_id: req.body.user_id
+        };
+        clientTodo.post('/silo/addTask', task, function(err1, res1, body1){
+            res.send({ success:true, task:task });
+        });
+    }
+});
+
+// SUPPRIME UE TASK
+app.post('/api/todo/delete/:todo_id', function(req,res){
+    if(!req.params.todo_id){
+        res.send(
+            {
+                success:false,
+                errorSet:['ID_EMPTY']
+            }
+        );
+    }else{
+        let data = {
+            id : req.params.todo_id
+        }
+        clientTodo.post('/silo/deleteTaskById', data, function(err1, res1, body1){
+            res.send(body1);
+        });
+    }
+});
 
 
 
