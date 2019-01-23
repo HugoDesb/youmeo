@@ -12,6 +12,10 @@ L'équipe qui a réalisé ce projet est composée de **Thibaut Lafon, Hugo Desbi
 |:---------------------------------: | :-----------------------------------------: | :------------------------------------: | :---------------------------------: | 
 | ![Capture d'écran 4](img/Video.PNG)| ![Capture d'écran 5](img/List-playlist.PNG) | ![Capture d'écran 6](img/Playlist.PNG) |![Capture d'écran 6](img/Compte.PNG) |
 
+| **Admin**                          | 
+| :--------------------------------: | 
+|![Capture d'écran 6](img/Admin.PNG) |
+
 Le projet est composé de 4 silos et un pilote.
 
 Les silos et le pilote sont des applications indépendantes.
@@ -41,11 +45,9 @@ ng serve
 2. puis ouvrir le navigateur a l'adresse http://localhost:4200/
 
 ## Admin
-Pour créer un premier compte admin:
-1. créer un premier utilisateur dans *Inscription*
-2. Dans la base de données MongoDB dans le répertoire:
-   * youmeo
-   * users
-   * changer le champ *admin* par *true*
+Utiliser le user admin existant lors de la connexion:
+* Email: *admin@admin.fr*
+* Password: *admin*
+
 
 
